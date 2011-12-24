@@ -1,0 +1,6 @@
+dmBehaviors:
+  dmSimpleTabsBehavior:
+    section: User interface
+    name: Simple Tabs
+    form: dmSimpleTabsBehaviorForm
+    view: dmSimpleTabsBehaviorView
