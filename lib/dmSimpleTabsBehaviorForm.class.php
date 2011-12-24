@@ -6,7 +6,8 @@ class dmSimpleTabsBehaviorForm extends dmBehaviorBaseForm {
     
     protected $animation = array(
         'none'=>'None',
-        'slide'=>'Slide',
+        'slide'=>'Slide down',
+        'show' => 'Slide corner',
         'fade'=>'Fade'
     );
     

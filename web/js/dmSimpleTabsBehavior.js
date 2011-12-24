@@ -13,7 +13,7 @@
             var $this = $(this),
             stopIndex = 0,
             $tabs = $this.children(), 
-            $tabsNavigation = $('<ul class="dmSimpleTabsNavigation"></ul>').data('doRunAnimation', false),
+            $tabsNavigation = $('<ul class="dmSimpleTabsNavigation"></ul>').data('animationRunning', false),
             $tabContainer = $('<div class="dmSimpleTabsContainer"></div>').addClass(behavior.theme);
             $.each($tabs, function(index){
                 $tabContainer.append($tabs[index]);
@@ -32,28 +32,48 @@
             }
             
             $('a.tab', $tabsNavigation).bind(behavior.event, function(){
-                 $tabs = $('.dmSimpleTabsContainer').children().not('.dmSimpleTabsNavigation');                 
-                 var $show = $($tabs[parseInt($(this).prop('rel'))]);
-                 var $hide = $tabs.filter(':visible');                 
-                 switch(behavior.animation) {
-                     case 'slide': {
-                             $hide.slideUp(behavior.duration, behavior.easing, function(){
-                                 $show.slideDown(behavior.duration, behavior.easing);
-                             });
-                     }break;
-                     case 'fade': {
-                             $hide.fadeOut(behavior.duration, behavior.easing, function(){
-                                 $show.fadeIn(behavior.duration, behavior.easing);
-                             });
-                     }break;
-                     default : {
-                             $hide.hide();
-                             $show.show();
-                     }break;
-                 }
-                 $('a.tab', $tabsNavigation).removeClass('selected');
-                 $(this).addClass('selected');
-                 return false;
+                if ($tabsNavigation.data('animationRunning')) return false;
+                $tabsNavigation.data('animationRunning', true);
+                $tabs = $('.dmSimpleTabsContainer').children().not('.dmSimpleTabsNavigation');                 
+                var $show = $($tabs[parseInt($(this).prop('rel'))]);
+                var $hide = $tabs.filter(':visible');                 
+                switch(behavior.animation) {
+                    case 'slide': {
+                        $hide.slideUp(behavior.duration, behavior.easing, function(){
+                            $show.slideDown(behavior.duration, behavior.easing, function(){
+                                $tabsNavigation.data('animationRunning', false);
+                            });
+                        });
+                    }
+                    break;
+                    case 'fade': {
+                        $hide.fadeOut(behavior.duration, behavior.easing, function(){
+                            $show.fadeIn(behavior.duration, behavior.easing, function(){
+                                $tabsNavigation.data('animationRunning', false);
+                            });
+                        });
+                    }
+                    break;
+                    case 'show' : {
+                        $hide.hide(behavior.duration, behavior.easing, function(){
+                            $show.show(behavior.duration, behavior.easing, function(){
+                                $tabsNavigation.data('animationRunning', false);
+                            });
+                        });                             
+                    }
+                    break;
+                    default: {
+                        $hide.hide(0, behavior.easing, function(){
+                            $show.show(0, behavior.easing, function(){
+                                $tabsNavigation.data('animationRunning', false);
+                            });
+                        });
+                    }
+                    break;
+                }
+                $('a.tab', $tabsNavigation).removeClass('selected');
+                $(this).addClass('selected');
+                return false;
             });            
         },
         stop: function(behavior) {
