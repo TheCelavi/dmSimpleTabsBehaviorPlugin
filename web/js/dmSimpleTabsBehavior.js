@@ -23,14 +23,16 @@
             $this.prepend($tabContainer);
             $tabContainer.prepend($tabsNavigation);
             for (var i=0; i<=stopIndex; i++) {
-                try {
+                if (behavior.titles[i])
                     $tabsNavigation.append($('<li></li>').append($('<a href="#" rel="' + i + '" class="tab"></a>').html(behavior.titles[i])));                    
-                } catch (e) {
+                else
                     $tabsNavigation.append($('<li></li>').append($('<a href="#" rel="' + i + '" class="tab"></a>').html('Undefined')));
+                
+                if (i == 0) {
+                    $tabsNavigation.find('li').addClass('first').find('a.tab').addClass('selected').addClass('first');
                 }
-                if (i == 0) $tabsNavigation.find('a.tab').addClass('selected');
             }
-            
+            $tabsNavigation.find('li:last').addClass('last').find('a.tab').addClass('last');
             $('a.tab', $tabsNavigation).bind(behavior.event, function(){
                 if ($tabsNavigation.data('animationRunning')) return false;
                 $tabsNavigation.data('animationRunning', true);
