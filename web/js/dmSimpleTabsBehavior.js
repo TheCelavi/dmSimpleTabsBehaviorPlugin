@@ -30,8 +30,8 @@
                 
                 if (i == 0) {
                     $tabsNavigation.find('li').addClass('first').find('a.tab').addClass('selected').addClass('first');
-                }
-            }
+                };
+            };
             $tabsNavigation.find('li:last').addClass('last').find('a.tab').addClass('last');
             $('a.tab', $tabsNavigation).bind(behavior.event, function(){
                 if ($tabsNavigation.data('animationRunning')) return false;
@@ -46,7 +46,7 @@
                                 $tabsNavigation.data('animationRunning', false);
                             });
                         });
-                    }
+                    };
                     break;
                     case 'fade': {
                         $hide.fadeOut(behavior.duration, behavior.easing, function(){
@@ -54,7 +54,7 @@
                                 $tabsNavigation.data('animationRunning', false);
                             });
                         });
-                    }
+                    };
                     break;
                     case 'show' : {
                         $hide.hide(behavior.duration, behavior.easing, function(){
@@ -62,7 +62,7 @@
                                 $tabsNavigation.data('animationRunning', false);
                             });
                         });                             
-                    }
+                    };
                     break;
                     default: {
                         $hide.hide(0, behavior.easing, function(){
@@ -70,9 +70,9 @@
                                 $tabsNavigation.data('animationRunning', false);
                             });
                         });
-                    }
+                    };
                     break;
-                }
+                };
                 $('a.tab', $tabsNavigation).removeClass('selected');
                 $(this).addClass('selected');
                 return false;
@@ -87,7 +87,7 @@
                 var $item = $($returnItems[i]); 
                 $this.prepend($item);
                 $item.show();
-            }
+            };
             $tabContainer.remove();
         },
         destroy: function(behavior) {            
@@ -105,7 +105,7 @@
                 return methods.init.apply( this, [method] );
             } else {
                 $.error( 'Method ' +  method + ' does not exist on jQuery.dmSimpleTabsBehavior' );
-            }  
+            } ; 
         });
     };
 

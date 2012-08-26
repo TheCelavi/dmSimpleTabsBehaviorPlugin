@@ -1,6 +1,6 @@
 js:
   dmSimpleTabsBehaviorPlugin:
-    launch: dmSimpleTabsBehavior
+    launch: dmSimpleTabsBehavior.min
 css:
   dmSimpleTabsBehaviorPlugin:
     themes: themes
