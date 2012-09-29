@@ -24,9 +24,9 @@
             $tabContainer.prepend($tabsNavigation);
             for (var i=0; i<=stopIndex; i++) {
                 if (behavior.titles[i])
-                    $tabsNavigation.append($('<li></li>').append($('<a href="#" rel="' + i + '" class="tab"></a>').html(behavior.titles[i])));                    
+                    $tabsNavigation.append($('<li></li>').append($('<a href="#" rel="' + i + '" class="tab tab_title_index_' + i + '"></a>').html(behavior.titles[i])));                    
                 else
-                    $tabsNavigation.append($('<li></li>').append($('<a href="#" rel="' + i + '" class="tab"></a>').html('Undefined')));
+                    $tabsNavigation.append($('<li></li>').append($('<a href="#" rel="' + i + '" class="tab tab_title_index_' + i + '"></a>').html('Undefined')));
                 
                 if (i == 0) {
                     $tabsNavigation.find('li').addClass('first').find('a.tab').addClass('selected').addClass('first');
