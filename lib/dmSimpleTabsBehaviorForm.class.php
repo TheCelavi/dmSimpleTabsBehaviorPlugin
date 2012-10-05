@@ -73,11 +73,11 @@ class dmSimpleTabsBehaviorForm extends dmBehaviorBaseForm {
             'titles'=>'Enter tab titles separated with semicolon (;)',
             'duration' => 'Duration of the animation in ms'
         )); 
-        if (!$this->getDefault('theme')) $this->setDefault ('theme', 'dark');
-        if (!$this->getDefault('event')) $this->setDefault ('event', 'click');
-        if (!$this->getDefault('animation')) $this->setDefault ('animation', 'fade');
-        if (!$this->getDefault('easing')) $this->setDefault ('easing', 'jswing');
-        if (!$this->getDefault('duration')) $this->setDefault ('duration', 500);
+        if (is_null($this->getDefault('theme'))) $this->setDefault ('theme', 'dark');
+        if (is_null($this->getDefault('event'))) $this->setDefault ('event', 'click');
+        if (is_null($this->getDefault('animation'))) $this->setDefault ('animation', 'fade');
+        if (is_null($this->getDefault('easing'))) $this->setDefault ('easing', 'jswing');
+        if (is_null($this->getDefault('duration'))) $this->setDefault ('duration', 500);
         
         
         parent::configure();
