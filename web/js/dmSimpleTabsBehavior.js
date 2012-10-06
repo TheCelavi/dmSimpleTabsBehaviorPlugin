@@ -94,7 +94,7 @@
             var $this = $(this);
             $this.data('dmSimpleTabsBehavior', null);
         }
-    }
+    };
     
     $.fn.dmSimpleTabsBehavior = function(method, behavior){
         
